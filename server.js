@@ -7,13 +7,8 @@ const notebooks = './notebooks/';
 const fs = require('fs');
 app.use(bodyParser.json());
 app.get('/api/hello', (req, res) => {
-//  res.send({ express: 'Hello From Express' });
-
-
 
   fs.readdir(notebooks, (err, files) => {
-    ///console.log(files);
-
     
     res.setHeader('Content-type','text/html')
 
@@ -26,9 +21,6 @@ app.get('/api/hello', (req, res) => {
     
 
   });
-  //res.send({ express: s });
-  ///console.log(s);
-
 
 });
 
@@ -46,7 +38,7 @@ function makeid(length) {
 app.post('/api/data', (req, res) => {
   console.log(req.body.post);
   var path = "";
-  path = './notebooks/' + req.body.post.substring(0,8).replace(/[/\\?%*:|"<>]/g, '-') + makeid(3) + '.txt'
+  path = './notebooks/' + req.body.post.substring(0,20).replace(/[/\\?%*:|"<>]/g, '-') + makeid(3) + '.txt'
   fs.writeFileSync(path, req.body.post);
 
 });
