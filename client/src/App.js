@@ -29,6 +29,8 @@ class App extends Component {
   };
   
   handleSubmit = () => {
+    window.location.reload(false);
+
     this.props.sendData('/api/data',{ post: this.state.post });
   };
 
@@ -68,7 +70,6 @@ render(){
   <textarea type="text"
             value={this.state.post}
             onChange={e => this.setState({ post: e.target.value })} rows="30" cols="170">
-  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
   </textarea>        <br></br>
        
 
